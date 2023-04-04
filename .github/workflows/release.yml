@@ -50,3 +50,5 @@ jobs:
           yarn changeset version
           yarn changeset publish --non-interactive
           git push --follow-tags
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
