@@ -1,5 +1,11 @@
 # @codewdhruv/backstage-plugin-feature-flags
 
+## 1.0.2
+
+### Patch Changes
+
+- 0ce1a05: Testing changeset publish npm step
+
 ## 1.0.1
 
 ### Patch Changes
