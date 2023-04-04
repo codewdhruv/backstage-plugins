@@ -1,5 +1,11 @@
 # @codewdhruv/backstage-plugin-feature-flags
 
+## 2.0.0
+
+### Major Changes
+
+- e82babf: testing major release
+
 ## 1.0.2
 
 ### Patch Changes
