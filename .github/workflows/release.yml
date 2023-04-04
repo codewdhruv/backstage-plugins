@@ -49,3 +49,4 @@ jobs:
           yarn build
           yarn changeset version
           yarn changeset publish --non-interactive
+          git push --follow-tags
