@@ -55,6 +55,8 @@ pipeline:
                     command: |-
                       set -ex
 
+                      yarn changeset status
+
                       # root build is required for
                       cd plugins/harness-feature-flags/
                       pwd
