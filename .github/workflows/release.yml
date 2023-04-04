@@ -3,13 +3,14 @@ name: Release
 on:
   pull_request:
     branches: [main]
-    types: [opened]
+    types: [closed]
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
     name: Release
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
