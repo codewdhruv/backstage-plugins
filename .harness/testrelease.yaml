@@ -53,9 +53,8 @@ pipeline:
                     image: node:16
                     shell: Sh
                     command: |-
-                      yarn global add --dev @changesets/cli && yarn changeset init
-                      yarn install
-                      yarn changeset
+                      yarn add -W @changesets/cli
+                      yarn changeset init
                   when:
                     stageStatus: All
                   failureStrategies: []
