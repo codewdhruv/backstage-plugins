@@ -43,7 +43,6 @@ jobs:
         # You can do something when a publish should happen.
         run: |
           cd plugins/harness-feature-flags/
-          pwd
           npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
           yarn tsc
           yarn build
