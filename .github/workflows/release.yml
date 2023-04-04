@@ -46,7 +46,6 @@ jobs:
           npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
           yarn tsc
           yarn build
-          yarn changeset version
           yarn changeset publish --non-interactive
           git push --follow-tags
         env:
