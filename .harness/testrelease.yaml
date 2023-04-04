@@ -53,7 +53,7 @@ pipeline:
                     image: node:16
                     shell: Sh
                     command: |-
-                      yarn add @changesets/cli && yarn changeset init
+                      yarn global add @changesets/cli && yarn changeset init
                       yarn changeset
                   when:
                     stageStatus: All
