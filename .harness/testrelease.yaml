@@ -54,7 +54,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       yarn global add @changesets/cli && yarn changeset init
-                      yarn changeset
+                      yarn changeset init
                   when:
                     stageStatus: All
                   failureStrategies: []
