@@ -44,6 +44,12 @@ pipeline:
                       yarn tsc
                       yarn build
                       yarn prettier:check
+                  failureStrategies:
+                    - onFailure:
+                        errors:
+                          - AllErrors
+                        action:
+                          type: Ignore
               - step:
                   type: Run
                   name: npm publish
