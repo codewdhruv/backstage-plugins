@@ -42,6 +42,8 @@ jobs:
         if: steps.changesets.outputs.hasChangesets == 'true'
         # You can do something when a publish should happen.
         run: |
+          yarn tsc
+          yarn build
           yarn changeset publish --non-interactive
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
