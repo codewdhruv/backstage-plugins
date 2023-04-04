@@ -1,5 +1,5 @@
 ---
-@codewdhruv/backstage-plugin-feature-flags: major
+@codewdhruv/backstage-plugin-feature-flags: minor
 ---
 
 Create testing-sample.md
