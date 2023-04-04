@@ -1,5 +1,16 @@
 # @codewdhruv/backstage-plugin-feature-flags
 
+## 3.0.0
+
+### Major Changes
+
+- 028268b: Test major release
+- f106723: Testing major bump
+
+### Patch Changes
+
+- 7a7706c: minor bump
+
 ## 2.0.0
 
 ### Major Changes
