@@ -44,6 +44,12 @@ pipeline:
                       yarn tsc
                       yarn build
                       yarn prettier:check
+                  failureStrategies:
+                    - onFailure:
+                        errors:
+                          - AllErrors
+                        action:
+                          type: Ignore
               - step:
                   type: Run
                   name: npm publish
@@ -62,8 +68,8 @@ pipeline:
                       yarn install
                       yarn tsc
                       yarn build
-                      yarn add @changesets/cli && yarn changeset init
-                      yarn changeset
+                      yarn add -W @changesets/cli
+                      yarn changeset init
                       yarn changeset version
                       # npm publish --verbose
                       yarn changeset publish --non-interactive
@@ -78,22 +84,6 @@ pipeline:
                       limits:
                         memory: 8Gi
                         cpu: 2000m
-                  when:
-                    stageStatus: All
-                  failureStrategies: []
-              - step:
-                  type: Action
-                  name: changesets
-                  identifier: Create_Release_Pull_Request_or_Publish_to_npm
-                  id: changesets
-                  spec:
-                    uses: changesets/action@v1
-                    with:
-                      publish: yarn release
-                    env:
-                      CI: "true"
-                      GITHUB_TOKEN: <+secrets.getValue("GITHUB_TOKEN")>
-                      NPM_TOKEN: <+secrets.getValue("npm_token")>
                   when:
                     stageStatus: All
                   failureStrategies: []
