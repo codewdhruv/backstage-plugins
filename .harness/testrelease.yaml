@@ -46,6 +46,20 @@ pipeline:
                       yarn prettier:check
               - step:
                   type: Run
+                  name: changesets
+                  identifier: changesets
+                  spec:
+                    connectorRef: harnessnew
+                    image: node:16
+                    shell: Sh
+                    command: |-
+                      yarn add @changesets/cli && yarn changeset init
+                      yarn changeset
+                  when:
+                    stageStatus: All
+                  failureStrategies: []
+              - step:
+                  type: Run
                   name: npm publish
                   identifier: npm_publish
                   spec:
