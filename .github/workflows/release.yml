@@ -41,8 +41,14 @@ jobs:
         if: steps.changesets.outputs.hasChangesets == 'false'
         # You can do something when a publish should happen.
         run: |
+          cd plugins/harness-feature-flags/
+          pwd
+          npm config set //registry.npmjs.org/:_authToken <+secrets.getValue("npm_token")>
+          yarn tsc
+          yarn build
           yarn changeset version
           yarn changeset publish --non-interactive
+
 
       - name: Send a Slack notification if a publish happens
         if: steps.changesets.outputs.published == 'true'
