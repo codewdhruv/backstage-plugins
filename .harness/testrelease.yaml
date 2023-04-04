@@ -54,6 +54,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       yarn global add --dev @changesets/cli && yarn changeset init
+                      yarn install
                       yarn changeset
                   when:
                     stageStatus: All
