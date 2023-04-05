@@ -64,7 +64,7 @@ pipeline:
                       yarn changeset status
 
                       # root build is required for
-                      cd plugins/harness-feature-flags/
+                      cd plugins/harness-ci-cd/
                       pwd
                       npm config set //registry.npmjs.org/:_authToken <+secrets.getValue("npm_token")>
                       yarn install
