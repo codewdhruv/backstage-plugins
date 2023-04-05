@@ -1,5 +1,12 @@
 # @harnessio/backstage-plugin-ci-cd
 
+## 0.2.1
+
+### Patch Changes
+
+- 443796e: Testing multi account functionality
+- 45d1798: Testing multi account functionality test
+
 ## 0.2.0
 
 ### Minor Changes
