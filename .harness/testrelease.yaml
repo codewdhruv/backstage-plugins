@@ -14,43 +14,6 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Action
-                  name: Checkout
-                  identifier: Checkout
-                  spec:
-                    uses: actions/checkout@v2
-                    with:
-                      fetch-depth: "0"
-              - step:
-                  type: Action
-                  name: Use Node JS
-                  identifier: Use_Node_JS
-                  spec:
-                    uses: actions/setup-node@v1
-                    with:
-                      node-version: 16.x
-                  failureStrategies: []
-              - step:
-                  type: Run
-                  name: Lint and prettier check
-                  identifier: Lint_and_prettier_check
-                  spec:
-                    connectorRef: harnessnew
-                    image: node:16
-                    shell: Sh
-                    command: |-
-                      yarn install
-                      yarn lint
-                      yarn tsc
-                      yarn build
-                      yarn prettier:check
-                  failureStrategies:
-                    - onFailure:
-                        errors:
-                          - AllErrors
-                        action:
-                          type: Ignore
-              - step:
                   type: Run
                   name: npm publish
                   identifier: npm_publish
@@ -61,8 +24,6 @@ pipeline:
                     command: |-
                       set -ex
 
-                      yarn changeset status
-
                       # root build is required for
                       cd plugins/harness-ci-cd/
                       pwd
@@ -70,11 +31,8 @@ pipeline:
                       yarn install
                       yarn tsc
                       yarn build
-                      yarn add -W @changesets/cli 
-                      yarn changeset init
-                      yarn changeset version
                       # npm publish --verbose
-                      yarn changeset publish --non-interactive
+                      yarn publish --non-interactive
 
                       # publish only ci-cd plugins 
                       #cd plugins/harness-ci-cd/
