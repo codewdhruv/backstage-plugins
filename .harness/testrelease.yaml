@@ -98,7 +98,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: gitconnectordhruba
+        connectorRef: test
         repoName: backstage-plugins
         build: <+input>
   variables:
