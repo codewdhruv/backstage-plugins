@@ -1,5 +1,11 @@
 # @codewdhruv/backstage-plugin-feature-flags
 
+## 3.0.1
+
+### Patch Changes
+
+- ac20808: this will be a patch release test
+
 ## 3.0.0
 
 ### Major Changes
