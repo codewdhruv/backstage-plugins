@@ -1,0 +1,49 @@
+name: Release
+
+on:
+  pull_request:
+    branches: [master]
+    types: [closed]
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Release
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Creating .npmrc
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          EOF
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+       
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish
+        if: steps.changesets.outputs.hasChangesets == 'true'
+        # You can do something when a publish should happen.
+        run: |
+          yarn tsc
+          yarn build
+          yarn changeset publish --non-interactive
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
