@@ -25,7 +25,7 @@ pipeline:
                       set -ex
 
                       # root build is required for
-                      cd plugins/harness-ci-cd/
+                      cd plugins/harness-feature-flags/
                       pwd
                       npm config set //registry.npmjs.org/:_authToken <+secrets.getValue("npm_token")>
                       yarn install
