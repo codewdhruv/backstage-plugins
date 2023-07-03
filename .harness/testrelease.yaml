@@ -55,7 +55,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: gitconnectordhruba
+        connectorRef: testing
         build: <+input>
   variables:
     - name: GIT_BOT_TOKEN
