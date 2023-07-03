@@ -56,7 +56,6 @@ pipeline:
     ci:
       codebase:
         connectorRef: gitconnectordhruba
-        repoName: https://github.com/codewdhruv/backstage-plugins/
         build: <+input>
   variables:
     - name: GIT_BOT_TOKEN
